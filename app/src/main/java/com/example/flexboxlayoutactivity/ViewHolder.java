@@ -12,7 +12,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     public ViewHolder(View itemView) {
         super(itemView);
         if(itemView!=null) {
-            this.textItem = itemView.findViewById(R.id.flex_box_recycler_view_text_item);
+            this.textItem = itemView.findViewById(R.id.tv_question);
         }
     }
 
