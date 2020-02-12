@@ -19,6 +19,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
     private int positionAnswer = Constant.DEFAULT_RES_ID;
     private QuestionAdapterListener listener;
     private boolean checkAnswer;
+    private boolean isCorrectAll = true;
 
     public QuestionAdapter(Context context, List<Question> questions, QuestionAdapterListener listener) {
         this.questions = questions;
@@ -35,6 +36,10 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
     public void checkAnswer(boolean isCheckAnswer) {
         this.checkAnswer = isCheckAnswer;
         notifyDataSetChanged();
+    }
+
+    public boolean isCorrectAll() {
+        return isCorrectAll;
     }
 
     @NonNull
@@ -58,6 +63,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
         if (question.isClick()) {
             if (!question.isCorrect() && checkAnswer) {
                 holder.tvQuestion.setBackgroundResource(R.drawable.background_read);
+                isCorrectAll = false;
             } else {
                 holder.tvQuestion.setBackgroundResource(R.drawable.background_blue);
             }
@@ -78,10 +84,11 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
         holder.tvQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (question.isClick() && !question.getQuestion().isEmpty()) {
+                if (!checkAnswer && question.isClick() && !question.getQuestion().isEmpty()) {
                     Toast.makeText(view.getContext(), "You click text : " + holder.tvQuestion.getText(), Toast.LENGTH_SHORT).show();
                     if (listener != null) {
                         listener.onClick(question.getPositionAnswer());
+                        question.setCorrect(false);
                     }
                     question.setQuestion(Constant.EMPTY_STRING);
                     question.setPositionAnswer(Constant.DEFAULT_RES_ID);

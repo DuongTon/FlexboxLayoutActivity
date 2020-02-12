@@ -44,10 +44,15 @@ public class MainActivity extends AppCompatActivity {
         btnCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (answerAdapter.getLimitClick() <= 0){
-                    questionAdapter.checkAnswer(true);
+                if (btnCheck.getText().equals("Kiểm tra")){
+                    if (answerAdapter.getLimitClick() <= 0){
+                        questionAdapter.checkAnswer(true);
+                        btnCheck.setText("Tiếp tục");
+                    }else {
+                        Toast.makeText(MainActivity.this, "Vui lòng điền đầy đủ từ", Toast.LENGTH_SHORT).show();
+                    }
                 }else {
-                    Toast.makeText(MainActivity.this, "Vui lòng điền đầy đủ từ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, questionAdapter.isCorrectAll() + " ", Toast.LENGTH_SHORT).show();
                 }
             }
         });
