@@ -1,6 +1,7 @@
 package com.example.flexboxlayoutactivity;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,7 +53,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         final Question question = questions.get(position);
-        if (answer != null && question.isClick() && answer.getPositionCorrect() == question.getPositionCorrect()) {
+        if (answer != null && question.isClick() && answer.getPositionCorrect() == question.getPositionCorrect() && question.getQuestion().isEmpty()) {
             question.setCorrect(true);
         }
         if (question.isClick()) {
@@ -64,8 +65,10 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
             if (!question.isCorrect() && checkAnswer) {
                 holder.tvQuestion.setBackgroundResource(R.drawable.background_read);
                 isCorrectAll = false;
+                Log.d("TONDV", question.isCorrect() + " " + question.getQuestion() + " " + position);
             } else {
                 holder.tvQuestion.setBackgroundResource(R.drawable.background_blue);
+                Log.d("TONDV", question.isCorrect() + " " + question.getQuestion() + " " + position);
             }
         } else {
             holder.tvQuestion.setBackgroundResource(R.drawable.background_white);

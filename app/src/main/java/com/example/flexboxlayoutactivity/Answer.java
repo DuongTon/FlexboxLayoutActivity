@@ -4,6 +4,16 @@ public class Answer {
     private String answer;
     private int positionCorrect;
 
+    private boolean isGone;
+
+    public boolean isGone() {
+        return isGone;
+    }
+
+    public void setGone(boolean gone) {
+        isGone = gone;
+    }
+
     public String getAnswer() {
         return answer;
     }

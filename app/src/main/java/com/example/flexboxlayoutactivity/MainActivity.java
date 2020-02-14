@@ -20,8 +20,8 @@ public class MainActivity extends AppCompatActivity {
 
     // This is the text that will be rendered in the screen.
     //private String textArr[] = {"dev2qa.com", "is", "a very good", "android example website", "there are", "a lot of", "android, java examples"};
-    private String str = "我是他的影迷我是他 _ 的影迷我是 他的影迷我是 _他的影迷我是_他的影迷我是他_ 的影迷我是他的影迷";
-    private String strAnswer = "我是他 的影迷 我是他 的影迷我 是他的";
+    private String str = "我是他的影迷我是他 _ 的影迷我是 他的影迷我是 _他的影迷我是_他的影迷我是他_ 的影迷我是_他的影迷";
+    private String strAnswer = "Một Hai Ba Bốn Năm Sáu Bẩy";
     private String textArr[];
     private String textArrAnswer[];
     private QuestionAdapter questionAdapter;
